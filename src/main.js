@@ -15,7 +15,16 @@ require('datatables.net-bs/css/dataTables.bootstrap.css')
 
 import App from './App.vue'
 
+const routes = [
+  { path: '/', name: 'customerIndex', component: App.components.CustomerIndex }
+]
+
+const router = new VueRouter({
+  routes: routes
+});
+
 new Vue({
   el: '#app',
+  router: router,
   render: h => h(App)
 })
