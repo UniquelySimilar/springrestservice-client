@@ -20,14 +20,57 @@
             var thisComponent = this;
 
             axios.get('http://localhost:8080/springrestservice/api/customer/')
-            .then(response => {
-                var customers = response.data;
-                console.log(customers);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+                .then(response => {
+                    var customers = response.data;
+                    //console.log(customers);
+
+                    customerTable = createDataTable(customers);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
+    }
+
+    function createDataTable(customers) {
+        return $('#customer-table').DataTable({
+            data: customers,
+            columns: [
+                { title: "Id", data: "id" },
+                { title: "Name", data: "name" },
+                {
+                    title: "Home Phone",
+                    data: "homePhone",
+                    orderable: false
+                },
+                {
+                    title: "Email",
+                    data: "email"
+                },
+                {
+                    title: "",
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    defaultContent: "<button class=\"btn btn-default show-btn\">Show</button>"
+                },
+                {
+                    title: "",
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    defaultContent: "<button class=\"btn btn-default edit-btn\">Edit</button>"
+                },
+                {
+                    title: "",
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    defaultContent: "<button class=\"btn btn-default delete-btn\">Delete</button>"
+                }
+            ]
+        });
+
     }
 
 </script>

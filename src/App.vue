@@ -12,6 +12,7 @@
 
 <script>
   import CustomerIndex from "./components/customer/Index.vue";
+  import CustomerCreateEdit from "./components/customer/CreateEdit.vue";
 
   export default {
     name: 'app',
@@ -20,7 +21,8 @@
       }
     },
     components: {
-      CustomerIndex
+      CustomerIndex,
+      CustomerCreateEdit
     }
   }
 </script>
@@ -33,11 +35,11 @@
   }
 
   header {
-    background-color: #d9ffb3;
+    background-color: #cdd1d3;
     font-size: 1em;
     font-weight: bold;
     padding: 0.8em 1em 0.8em;
-    margin-bottom: 0.5em;
+    margin: 0 -15px 0.5em -15px;
   }
 
   .component-heading {
