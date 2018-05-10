@@ -1,12 +1,14 @@
 <template>
-    <div id="customer-index">
-        <div>
-            <span class="component-heading">Customer List</span>
-            <router-link class="btn btn-default" :to="{ name: 'customerCreate' }">Create Customer</router-link>
+    <div class="row">
+        <div id="customer-index">
+            <div>
+                <span class="component-heading">Customer List</span>
+                <router-link class="btn btn-default" :to="{ name: 'customerCreate' }">Create Customer</router-link>
+            </div>
+            <hr>
+            <table id="customer-table" class="table table-striped">
+            </table>
         </div>
-        <hr>
-        <table id="customer-table" class="table table-striped">
-        </table>
     </div>
 </template>
 

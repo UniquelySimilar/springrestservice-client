@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="container">
-    <header>
-      <h2>Customer Manager Client Application for Spring REST Service</h2>
-    </header>
     <div class="row">
-      <!-- component matched by the route will render here -->
-      <router-view></router-view>
+      <header>
+        <h2>Customer Manager Client Application for Spring REST Service</h2>
+      </header>
     </div>
+    <!-- component matched by the route will render here -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -39,7 +39,7 @@
     font-size: 1em;
     font-weight: bold;
     padding: 0.8em 1em 0.8em;
-    margin: 0 -15px 0.5em -15px;
+    margin-bottom: 0.5em;
   }
 
   .component-heading {
