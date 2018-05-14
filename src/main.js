@@ -8,6 +8,8 @@ require('bootstrap');
 require('bootstrap/dist/css/bootstrap.css');
 
 window.axios = require('axios');
+window.axios.defaults.headers.post['Content-Type'] = 'application/json';
+window.axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 require('datatables.net');
 require('datatables.net-bs');
