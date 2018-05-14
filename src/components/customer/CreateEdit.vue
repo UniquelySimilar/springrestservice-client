@@ -1,7 +1,7 @@
 <template>
     <div id="customer-create-edit">
         <div>
-            <span class="component-heading">New Customer</span>
+            <span class="component-heading">{{ getPageHeading }}</span>
         </div>
         <hr>
         <form class="form-horizontal">
@@ -83,7 +83,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-4 col-md-2">
-                    <button type="button" class="btn btn-default" v-on:click="submitForm">Save</button>
+                    <button type="button" class="btn btn-default" v-on:click="submitForm">{{ getSubmitBtnLabel }}</button>
                     <router-link class="btn btn-default" :to="{ name: 'customerIndex' }">Cancel</router-link>
                 </div>
             </div>
@@ -93,9 +93,16 @@
 
 <script>
     export default {
+        props: {
+            id: {
+                type: Number,
+                required: false
+            }
+        },
         data() {
             return {
                 customer: {
+                    id: undefined,
                     name: '',
                     street: '',
                     city: '',
@@ -107,6 +114,22 @@
                 },
                 validationErrors: []
             }
+        },
+        computed: {
+            getPageHeading() {
+                var pageHeading = "New Customer"
+                if (this.id) {
+                    pageHeading = "Edit Customer"
+                }
+                return pageHeading;
+            },
+            getSubmitBtnLabel() {
+                var submitBtnLabel = "Save"
+                if (this.id) {
+                    submitBtnLabel = "Update"
+                }
+                return submitBtnLabel;
+            },
         },
         methods: {
             getValidationError: function (fieldName) {
@@ -123,11 +146,15 @@
                 return returnValue;
             },
             submitForm() {
-                // TODO: Add logic to differentiate submitting create vs update
-                axios.post('http://localhost:8080/springrestservice/api/customer/', JSON.stringify(this.customer))
+                var url = 'http://localhost:8080/springrestservice/api/customer/';
+                axios({
+                    method: this.id ? 'put' : 'post',
+                    url: url,
+                    data: JSON.stringify(this.customer)
+                })
                     .then(response => {
                         // Redirect back to Index view
-                        this.$router.push({ name: 'customerIndex'});
+                        this.$router.push({ name: 'customerIndex' });
                     })
                     .catch(error => {
                         if (error.response) {
@@ -150,10 +177,20 @@
                         }
                     });
             }
-
+        },
+        created() {
+            if (this.id) {
+                axios.get('http://localhost:8080/springrestservice/api/customer/' + this.id)
+                    .then(response => {
+                        this.customer = response.data;
+                        //console.log(this.customer);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
         }
     }
-
 </script>
 
 <style scoped>
