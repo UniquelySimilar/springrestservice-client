@@ -99,7 +99,10 @@
                     var currentRow = customerTable.row($(this).parents('tr'));
                     var rowData = currentRow.data();
                     //console.log(rowData)
-                    // Delete customer from database
+
+                    alert('Todo');
+                    // TODO: Delete customer from database
+                    /*
                     if (true == confirm('Delete Customer?')) {
                         axios.delete('http://laravel-retailer-rest.localhost/api/customers/' + rowData.id)
                             .then(response => {
@@ -110,6 +113,7 @@
                                 console.log(error);
                             });
                     }
+                    */
                 });
             }
         }

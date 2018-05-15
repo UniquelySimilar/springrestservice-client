@@ -12,6 +12,7 @@
 
 <script>
   import CustomerIndex from "./components/customer/Index.vue";
+  import CustomerShow from "./components/customer/Show.vue";
   import CustomerCreateEdit from "./components/customer/CreateEdit.vue";
 
   export default {
@@ -22,6 +23,7 @@
     },
     components: {
       CustomerIndex,
+      CustomerShow,
       CustomerCreateEdit
     }
   }

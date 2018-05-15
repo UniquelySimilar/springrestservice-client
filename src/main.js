@@ -19,6 +19,7 @@ import App from './App.vue'
 
 const routes = [
   { path: '/', name: 'customerIndex', component: App.components.CustomerIndex },
+  { path: '/:id', name: 'customerShow', component: App.components.CustomerShow, props: true },
   { path: '/create', name: 'customerCreate', component: App.components.CustomerCreateEdit },
   { path: '/:id/edit', name: 'customerEdit', component: App.components.CustomerCreateEdit, props: true }
 ]
