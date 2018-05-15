@@ -100,11 +100,9 @@
                     var rowData = currentRow.data();
                     //console.log(rowData)
 
-                    alert('Todo');
-                    // TODO: Delete customer from database
-                    /*
+                    // Delete customer from database
                     if (true == confirm('Delete Customer?')) {
-                        axios.delete('http://laravel-retailer-rest.localhost/api/customers/' + rowData.id)
+                        axios.delete('http://localhost:8080/springrestservice/api/customer/' + rowData.id)
                             .then(response => {
                                 // Remove associated row
                                 currentRow.remove().draw();
@@ -113,7 +111,6 @@
                                 console.log(error);
                             });
                     }
-                    */
                 });
             }
         }
