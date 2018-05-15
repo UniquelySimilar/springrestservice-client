@@ -23,7 +23,7 @@
 
             thisRouter = this.$router;
 
-            axios.get('http://localhost:8080/springrestservice/api/customer/')
+            axios.get(this.$root.baseURL)
                 .then(response => {
                     var customers = response.data;
                     //console.log(customers);
@@ -77,6 +77,7 @@
             },
             dataTableInitComplete: function () {
                 //console.log('Table initialization complete');
+                var baseURL = this.$root.baseURL;
 
                 // Click handler for Show button
                 $('#customer-table tbody').on('click', 'button.show-btn', function () {
@@ -102,7 +103,7 @@
 
                     // Delete customer from database
                     if (true == confirm('Delete Customer?')) {
-                        axios.delete('http://localhost:8080/springrestservice/api/customer/' + rowData.id)
+                        axios.delete(baseURL + rowData.id)
                             .then(response => {
                                 // Remove associated row
                                 currentRow.remove().draw();

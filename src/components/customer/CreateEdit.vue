@@ -146,10 +146,9 @@
                 return returnValue;
             },
             submitForm() {
-                var url = 'http://localhost:8080/springrestservice/api/customer/';
                 axios({
                     method: this.id ? 'put' : 'post',
-                    url: url,
+                    url: this.$root.baseURL,
                     data: JSON.stringify(this.customer)
                 })
                     .then(response => {
@@ -180,7 +179,7 @@
         },
         created() {
             if (this.id) {
-                axios.get('http://localhost:8080/springrestservice/api/customer/' + this.id)
+                axios.get(this.$root.baseURL + this.id)
                     .then(response => {
                         this.customer = response.data;
                         //console.log(this.customer);

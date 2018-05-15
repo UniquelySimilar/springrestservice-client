@@ -31,5 +31,8 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router: router,
+  data: {
+    baseURL: 'http://localhost:8080/springrestservice/api/customer/'
+  },
   render: h => h(App)
 })

@@ -80,7 +80,7 @@
             }
         },
         created() {
-            axios.get('http://localhost:8080/springrestservice/api/customer/' + this.id)
+            axios.get(this.$root.baseURL + this.id)
                 .then(response => {
                     this.customer = response.data;
                     //console.log(this.customer);
